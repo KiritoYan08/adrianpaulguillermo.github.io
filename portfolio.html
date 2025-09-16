@@ -4,37 +4,176 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adrian Paul Guillermo | Portfolio</title>
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <style>
-    body {
+    html {
       scroll-behavior: smooth;
     }
-    header {
-      background: linear-gradient(to right, #0d6efd, #6610f2);
-      color: white;
-      padding: 80px 0;
+    body {
+      background: #f8f9fa;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+    }
+    .navbar {
+      transition: box-shadow 0.3s, background 0.3s;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
+    .navbar.scrolled {
+      background: #212529 !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+    .navbar-brand {
+      font-weight: bold;
+      letter-spacing: 1.5px;
+    }
+    .nav-link {
+      color: #fff !important;
+      transition: color 0.2s;
+    }
+    .nav-link:hover {
+      color: #ffc107 !important;
+    }
+    header.hero {
+      background: linear-gradient(120deg, #0d6efd 70%, #6610f2 100%);
+      color: #fff;
+      padding: 120px 0 80px 0;
+      position: relative;
+      overflow: hidden;
       text-align: center;
     }
+    header.hero::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120vw;
+      height: 250px;
+      background: radial-gradient(circle, #fff2, transparent 70%);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero-content .lead {
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-social {
+      margin-top: 1.5rem;
+    }
+    .hero-social a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 2rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .hero-social a:hover {
+      color: #ffc107;
+      transform: scale(1.2);
+    }
     section {
-      padding: 60px 0;
+      padding: 70px 0;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0d6efd;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .card {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .skill-icon {
+      font-size: 2rem;
+      color: #6610f2;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+    .timeline {
+      border-left: 3px solid #0d6efd;
+      margin-left: 1rem;
+      padding-left: 2rem;
+    }
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -29px;
+      top: 6px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #0d6efd;
+      border: 3px solid #fff;
+    }
+    /* Project images */
+    .project-img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 1rem;
+      object-fit: cover;
+      aspect-ratio: 16/9;
+      background: #e9ecef;
+    }
+    /* Back to top */
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      font-size: 2rem;
+      background: #0d6efd;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      padding: 10px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #topBtn:hover {
+      background: #6610f2;
     }
     footer {
       background: #212529;
       color: #adb5bd;
-      padding: 20px;
       text-align: center;
-    }
-    .nav-link {
-      color: white !important;
+      padding: 28px 0 10px 0;
+      font-size: 1rem;
+      margin-top: 60px;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
 <body>
-
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">APG Portfolio</a>
+      <a class="navbar-brand" href="#">APG Portfolio</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -52,44 +191,68 @@
     </div>
   </nav>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1 class="display-4 fw-bold">Adrian Paul A. Guillermo</h1>
-      <p class="lead">IT Professional | Web Developer | Researcher</p>
-      <p>
-        <a href="mailto:apaguillermo08@gmail.com" class="btn btn-light btn-lg">Contact Me</a>
-        <a href="https://www.linkedin.com/in/adrian-paul-guillermo-a10993260" target="_blank" class="btn btn-outline-light btn-lg">LinkedIn</a>
-      </p>
+  <!-- Hero Header -->
+  <header class="hero" id="home">
+    <div class="container hero-content">
+      <img src="https://avatars.githubusercontent.com/u/112309068?v=4" alt="Avatar" width="135" class="rounded-circle mb-3 shadow-lg border border-3" style="background:#fff;">
+      <h1>Adrian Paul A. Guillermo</h1>
+      <p class="lead">IT Professional &middot; Web Developer &middot; Researcher</p>
+      <div>
+        <a href="mailto:apaguillermo08@gmail.com" class="btn btn-light btn-lg me-2"><i class="fa fa-envelope"></i> Contact Me</a>
+        <a href="https://www.linkedin.com/in/adrian-paul-guillermo-a10993260" target="_blank" class="btn btn-outline-light btn-lg"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+      <div class="hero-social mt-3">
+        <a href="mailto:apaguillermo08@gmail.com" title="Email"><i class="fa fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/adrian-paul-guillermo-a10993260" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <!-- Add more social icons here if needed -->
+      </div>
     </div>
   </header>
 
   <!-- About -->
   <section id="about">
     <div class="container">
-      <h2 class="mb-4">About Me</h2>
-      <p>
-        I am <strong>Adrian Paul A. Guillermo</strong>, an Information Technology professional with a strong foundation 
-        in web development, database programming, and computer systems. My experience spans across client relations, 
-        data management, and the development of innovative IT solutions, including smart systems and academic platforms.
-      </p>
-      <p>
-        Beyond technical expertise, I bring leadership skills from serving as a class mayor, creativity as a graphics designer, 
-        and commitment as an award-winning researcher and developer. I thrive in collaborative environments where technology 
-        meets real-world application, and I am passionate about creating solutions that enhance efficiency, usability, and impact.
-      </p>
+      <h2 class="section-title">About Me</h2>
+      <div class="mx-auto" style="max-width: 880px;">
+        <p>
+          I am <strong>Adrian Paul A. Guillermo</strong>, an Information Technology professional with a strong foundation 
+          in web development, database programming, and computer systems. My experience spans across client relations, 
+          data management, and the development of innovative IT solutions, including smart systems and academic platforms.
+        </p>
+        <p>
+          Beyond technical expertise, I bring leadership skills from serving as a class mayor, creativity as a graphics designer, 
+          and commitment as an award-winning researcher and developer. I thrive in collaborative environments where technology 
+          meets real-world application, and I am passionate about creating solutions that enhance efficiency, usability, and impact.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- Skills -->
   <section id="skills" class="bg-light">
     <div class="container">
-      <h2 class="mb-4">Skills</h2>
-      <div class="row">
-        <div class="col-md-3"><span class="fw-bold">Web Development</span><br> HTML, CSS, JS, Bootstrap</div>
-        <div class="col-md-3"><span class="fw-bold">Programming</span><br> C, Database Programming, Arduino</div>
-        <div class="col-md-3"><span class="fw-bold">Tools</span><br> Excel, Photoshop, Data Analysis</div>
-        <div class="col-md-3"><span class="fw-bold">Soft Skills</span><br> Leadership, Communication, Research</div>
+      <h2 class="section-title">Skills</h2>
+      <div class="row text-center gy-4">
+        <div class="col-md-3">
+          <span class="skill-icon"><i class="fa fa-code"></i></span>
+          <div class="fw-bold">Web Development</div>
+          <div>HTML, CSS, JS, Bootstrap</div>
+        </div>
+        <div class="col-md-3">
+          <span class="skill-icon"><i class="fa fa-microchip"></i></span>
+          <div class="fw-bold">Programming</div>
+          <div>C, Database Programming, Arduino</div>
+        </div>
+        <div class="col-md-3">
+          <span class="skill-icon"><i class="fa fa-tools"></i></span>
+          <div class="fw-bold">Tools</div>
+          <div>Excel, Photoshop, Data Analysis</div>
+        </div>
+        <div class="col-md-3">
+          <span class="skill-icon"><i class="fa fa-user-friends"></i></span>
+          <div class="fw-bold">Soft Skills</div>
+          <div>Leadership, Communication, Research</div>
+        </div>
       </div>
     </div>
   </section>
@@ -97,15 +260,20 @@
   <!-- Experience -->
   <section id="experience">
     <div class="container">
-      <h2 class="mb-4">Experience</h2>
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Intern, Commission on Elections (COMELEC)</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Feb 2024 – May 2024</h6>
-          <p class="card-text">
-            Assisted in client handling, verified voter registration forms, and managed data entry into the system.
-          </p>
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline mx-auto" style="max-width:880px;">
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa fa-briefcase me-2"></i>Intern, Commission on Elections (COMELEC)</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Feb 2024 – May 2024</h6>
+              <p class="card-text">
+                Assisted in client handling, verified voter registration forms, and managed data entry into the system.
+              </p>
+            </div>
+          </div>
         </div>
+        <!-- Add more timeline items here if you have other experience -->
       </div>
     </div>
   </section>
@@ -113,65 +281,29 @@
   <!-- Education -->
   <section id="education" class="bg-light">
     <div class="container">
-      <h2 class="mb-4">Education</h2>
-      <ul class="list-group">
-        <li class="list-group-item">
-          <strong>BS in Information Technology</strong>, Cagayan State University – Sanchez Mira
-        </li>
-        <li class="list-group-item">
-          Computer Systems Servicing, Sanchez Mira School of Arts and Trades
-        </li>
-        <li class="list-group-item">
-          Salutatorian, C. Marzan Elementary School
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Certifications -->
-  <section id="certifications">
-    <div class="container">
-      <h2 class="mb-4">Certifications</h2>
-      <ul>
-        <li>Computer Systems Servicing NCII – ISSEx</li>
-        <li>CSS, Bootstrap, JavaScript, Web Development – Udemy</li>
-        <li>Web Design Course (Beginner to Advanced) – Udemy</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Awards -->
-  <section id="awards" class="bg-light">
-    <div class="container">
-      <h2 class="mb-4">Honors & Awards</h2>
-      <ul>
-        <li>College Service Award (Mayor of Class)</li>
-        <li>Graphics Designer of the Year</li>
-        <li>Outstanding OJT – COMELEC</li>
-        <li>Outstanding Capstone Project Developer – EaSibug</li>
-        <li>Proficiency in Database Programming – 1st Runner-Up</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="mb-4">Projects</h2>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="card shadow-sm">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline mx-auto" style="max-width:880px;">
+        <div class="timeline-item">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">EaSibug: Smart Watering System</h5>
-              <p class="card-text">Developed using Arduino to automate efficient plant watering.</p>
+              <h5 class="card-title"><i class="fa fa-graduation-cap me-2"></i>BS in Information Technology</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Cagayan State University – Sanchez Mira</h6>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="card shadow-sm">
+        <div class="timeline-item">
+          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">CICS Website</h5>
-              <p class="card-text">Developing a comprehensive web-based information system for CSU Sanchez Mira CICS.</p>
+              <h5 class="card-title">Computer Systems Servicing</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Sanchez Mira School of Arts and Trades</h6>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Salutatorian</h5>
+              <h6 class="card-subtitle mb-2 text-muted">C. Marzan Elementary School</h6>
             </div>
           </div>
         </div>
@@ -179,14 +311,106 @@
     </div>
   </section>
 
+  <!-- Certifications -->
+  <section id="certifications">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fa fa-certificate text-success me-2"></i>Computer Systems Servicing NCII – ISSEx</li>
+            <li class="list-group-item"><i class="fa fa-certificate text-success me-2"></i>CSS, Bootstrap, JavaScript, Web Development – Udemy</li>
+            <li class="list-group-item"><i class="fa fa-certificate text-success me-2"></i>Web Design Course (Beginner to Advanced) – Udemy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section id="awards" class="bg-light">
+    <div class="container">
+      <h2 class="section-title">Honors & Awards</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fa fa-trophy text-warning me-2"></i>College Service Award (Mayor of Class)</li>
+            <li class="list-group-item"><i class="fa fa-trophy text-warning me-2"></i>Graphics Designer of the Year</li>
+            <li class="list-group-item"><i class="fa fa-trophy text-warning me-2"></i>Outstanding OJT – COMELEC</li>
+            <li class="list-group-item"><i class="fa fa-trophy text-warning me-2"></i>Outstanding Capstone Project Developer – EaSibug</li>
+            <li class="list-group-item"><i class="fa fa-trophy text-warning me-2"></i>Proficiency in Database Programming – 1st Runner-Up</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="EaSibug: Smart Watering System" class="project-img">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa fa-leaf me-2 text-success"></i>EaSibug: Smart Watering System</h5>
+              <p class="card-text">Developed using Arduino to automate efficient plant watering.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="CICS Website" class="project-img">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa fa-globe me-2 text-primary"></i>CICS Website</h5>
+              <p class="card-text">Developing a comprehensive web-based information system for CSU Sanchez Mira CICS.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Add more projects here as needed -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="topBtn" title="Go to top"><i class="fa fa-arrow-up"></i></button>
+
   <!-- Footer -->
   <footer>
-    <p>© <span id="year"></span> Adrian Paul A. Guillermo · Built with Bootstrap</p>
+    <p>© <span id="year"></span> Adrian Paul A. Guillermo &middot; Built with <i class="fab fa-bootstrap"></i> Bootstrap</p>
   </footer>
 
+  <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Navbar shadow and background on scroll
+    window.addEventListener('scroll', function () {
+      const nav = document.querySelector('.navbar');
+      if (window.scrollY > 60) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+      // Show/hide top button
+      document.getElementById("topBtn").style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    // Back to top button
+    document.getElementById("topBtn").onclick = function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+    // Current year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').replace('#','');
+        if (targetId && document.getElementById(targetId)) {
+          e.preventDefault();
+          document.getElementById(targetId).scrollIntoView({behavior:"smooth"});
+        }
+      });
+    });
   </script>
 </body>
 </html>
